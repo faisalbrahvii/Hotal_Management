@@ -19,6 +19,7 @@ import ClientLayout from "./ClientLayout"
 import HomePage from "./client/page/HomePage";
 import RegisterModel  from "./client/model/RegisterModel"
 import CustomerInfo from "./client/BookingDetails/CustomerInfo";
+import Our_Amenities from "./client/page/Our_Amenities";
 
 // Create a single route structure
 const router = createBrowserRouter([
@@ -32,6 +33,7 @@ const router = createBrowserRouter([
       { path: "About", element: <About /> },
       { path: "register", element: <RegisterModel  /> },
       { path: "CustomerInfo", element: <CustomerInfo  /> },
+      { path: "Our_Amenities", element: <Our_Amenities  /> },
     ]
   }
 ]);

@@ -29,7 +29,7 @@ const Navbar = () => {
         <div className='hidden md:flex'>
           <ul className='flex items-center gap-4 text-lg text-white'>
             <Link to="/"><li className='px-4 py-2 hover:bg-gray-700 transition'>Home</li></Link>
-            <li className='px-4 py-2 hover:bg-gray-700 transition'>Amenities</li>
+            <Link to="/Our_Amenities"><li className='px-4 py-2 hover:bg-gray-700 transition'>Our Amenities</li></Link>
             <Link to="/Gallery"><li className='px-4 py-2 hover:bg-gray-700 transition'>Gallery</li></Link>
             <Link to="/CheckoutRoom"><li className='px-4 py-2 hover:bg-gray-700 transition'>Rooms</li></Link>
             <Link to="/About"><li className='px-4 py-2 hover:bg-gray-700 transition'>Blog</li></Link>
