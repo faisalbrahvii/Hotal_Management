@@ -26,21 +26,21 @@ const Navbar = () => {
       <div className="container mx-auto flex items-center justify-between py-4 px-6 lg:px-12">
         {/* Logo */}
         <Link to="/" className="text-white text-3xl font-bold tracking-wide">
-          LuxuryStay<span className="text-yellow-400">.</span>
+          LuxuryStay<span className="text-green-700">.</span>
         </Link>
 
         {/* Desktop Menu */}
         <nav className="hidden md:flex items-center gap-8 text-white">
-          <Link to="/" className="hover:text-yellow-400 transition">Home</Link>
-          <Link to="/Our_Amenities" className="hover:text-yellow-400 transition">Amenities</Link>
-          <Link to="/Gallery" className="hover:text-yellow-400 transition">Gallery</Link>
-          <Link to="/CheckoutRoom" className="hover:text-yellow-400 transition">Rooms</Link>
+          <Link to="/" className="hover:text-green-700 transition">Home</Link>
+          <Link to="/Our_Amenities" className="hover:text-green-700 transition">Amenities</Link>
+          <Link to="/Gallery" className="hover:text-green-700 transition">Gallery</Link>
+          <Link to="/CheckoutRoom" className="hover:text-green-700 transition">Rooms</Link>
           
           {/* Dropdown Menu */}
           <div className="relative">
             <button 
               onClick={() => setDropdownOpen(!dropdownOpen)} 
-              className="flex items-center gap-1 hover:text-yellow-400 transition"
+              className="flex items-center gap-1 hover:text-green-700 transition"
             >
               More <MdKeyboardArrowDown size={20} />
             </button>
@@ -54,7 +54,7 @@ const Navbar = () => {
           </div>
 
           {/* Register Button */}
-          <button onClick={openModal} className="bg-yellow-500 px-5 py-2 rounded-lg font-semibold hover:bg-yellow-600 transition">
+          <button onClick={openModal} className="bg-green-600 hover:bg-green-700 text-white text-sm sm:text-base font-bold rounded-lg px-6 py-3 transition duration-300 shadow-md">
             Register
           </button>
         </nav>
@@ -70,20 +70,20 @@ const Navbar = () => {
       {/* Mobile Menu */}
       <div className={`fixed top-0 left-0 w-full h-full bg-black bg-opacity-90 backdrop-blur-md text-white transition-all transform ${menuOpen ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"} md:hidden`}>
   <div className="flex flex-col items-center justify-center h-full gap-8 text-2xl font-medium">
-    <Link to="/" onClick={() => setMenuOpen(false)} className="hover:text-yellow-400 transition">Home</Link>
-    <Link to="/Our_Amenities" onClick={() => setMenuOpen(false)} className="hover:text-yellow-400 transition">Amenities</Link>
-    <Link to="/Gallery" onClick={() => setMenuOpen(false)} className="hover:text-yellow-400 transition">Gallery</Link>
-    <Link to="/CheckoutRoom" onClick={() => setMenuOpen(false)} className="hover:text-yellow-400 transition">Rooms</Link>
-    <Link to="/About" onClick={() => setMenuOpen(false)} className="hover:text-yellow-400 transition">About Us</Link>
-    <Link to="/Blog" onClick={() => setMenuOpen(false)} className="hover:text-yellow-400 transition">Blog</Link>
-    <Link to="/Contact" onClick={() => setMenuOpen(false)} className="hover:text-yellow-400 transition">Contact</Link>
+    <Link to="/" onClick={() => setMenuOpen(false)} className="hover:text-green-700 transition">Home</Link>
+    <Link to="/Our_Amenities" onClick={() => setMenuOpen(false)} className="hover:text-green-700 transition">Amenities</Link>
+    <Link to="/Gallery" onClick={() => setMenuOpen(false)} className="hover:text-green-700 transition">Gallery</Link>
+    <Link to="/CheckoutRoom" onClick={() => setMenuOpen(false)} className="hover:text-green-700 transition">Rooms</Link>
+    <Link to="/About" onClick={() => setMenuOpen(false)} className="hover:text-green-700 transition">About Us</Link>
+    <Link to="/Blog" onClick={() => setMenuOpen(false)} className="hover:text-green-700 transition">Blog</Link>
+    <Link to="/Contact" onClick={() => setMenuOpen(false)} className="hover:text-green-700 transition">Contact</Link>
 
     <button 
       onClick={() => {
         openModal();
         setMenuOpen(false);
       }} 
-      className="bg-yellow-500 px-8 py-3 rounded-lg font-semibold text-lg hover:bg-yellow-600 transition"
+      className="bg-green-600 hover:bg-green-700 text-white text-sm sm:text-base font-bold rounded-lg px-6 py-3 transition duration-300 shadow-md"
     >
       Register
     </button>

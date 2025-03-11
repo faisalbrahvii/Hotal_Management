@@ -39,7 +39,7 @@ const Hero = () => {
           <p className="text-lg sm:text-xl md:text-2xl text-white/90 font-medium mt-4 leading-relaxed">
             Enjoy a premium experience with our finest accommodations, tailored for your relaxation and comfort.
           </p>
-          <button className="mt-6 py-3 px-12 sm:px-16 md:px-20 bg-yellow-500 text-white font-semibold transition-all hover:bg-yellow-600 hover:shadow-lg transform hover:scale-105 rounded-full text-lg sm:text-xl">
+          <button className=" mt-6 py-3 px-12 sm:px-16 md:px-20 bg-green-600 text-white font-semibold transition-all hover:bg-green-700 hover:shadow-lg transform hover:scale-105 rounded-full text-lg sm:text-xl">
             Book Your Stay
           </button>
         </div>

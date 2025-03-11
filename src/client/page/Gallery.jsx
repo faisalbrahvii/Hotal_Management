@@ -24,14 +24,14 @@ const Gallery = () => {
     <div>
       {/* Hero Section */}
       <div
-        className="w-full bg-zinc-200 pt-20 sm:pt-28 md:pt-32 lg:pt-40 overflow-hidden relative"
+        className="w-full  bg-zinc-200 pt-20 sm:pt-28 md:pt-32 lg:pt-40 overflow-hidden relative"
         style={{
           backgroundImage: `url(${HeroImage})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
       >
-        <div className="bg-black/40 text-white text-center p-6 sm:p-10 rounded-lg mx-4 sm:mx-auto max-w-3xl">
+        <div className="bg-black/40 text-white text-center p-6 sm:p-10 rounded-lg mx-4 sm:mx-auto ">
           <p className="font-serif text-3xl sm:text-5xl">Find Your Peace 🕊</p>
           <h1 className="text-lg sm:text-2xl font-sans mt-4">
             The Place where you are looking for
@@ -103,7 +103,7 @@ const Gallery = () => {
                         <h5 className="text-lg font-bold text-red-500">
                           ${room.price}
                         </h5>
-                        <button className="bg-blue-600 text-white px-4 py-2 text-sm rounded-lg hover:bg-blue-500 transition">
+                        <button className="bg-green-600 hover:bg-green-700 text-white text-sm sm:text-base font-bold rounded-lg px-6 py-3 transition duration-300 shadow-md">
                           Book Now
                         </button>
                       </div>

@@ -45,7 +45,7 @@ const RoomBooks = () => {
                 </button>
                 </Link>
                 <Link to="/CheckoutRoom">
-                  <button className="font-bold text-sm border rounded-2xl py-2 px-6 bg-gray-800 text-white hover:bg-gray-300 hover:text-black transition">
+                  <button className="font-semibold   text-sm border rounded-2xl py-2 px-6 bg-green-600 text-white hover:bg-green-700  transition">
                     Reserve Now
                   </button>
                 </Link>

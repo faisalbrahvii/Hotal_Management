@@ -23,7 +23,7 @@ const Blog = () => {
               Sign up for exclusive offers from us
             </h1>
 
-            <button className="mt-6 py-2 px-8 sm:px-10 md:px-14 bg-slate-700 text-white font-semibold transition-all hover:bg-slate-500 hover:text-black rounded-full shadow-md hover:shadow-lg transform hover:scale-105">
+            <button className="mt-6 py-2 px-8 sm:px-10 md:px-14 bg-green-600 text-white font-semibold transition-all hover:bg-green-700 rounded-full shadow-md hover:shadow-lg transform hover:scale-105">
               Login
             </button>
           </div>

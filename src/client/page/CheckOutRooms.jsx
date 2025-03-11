@@ -6,17 +6,21 @@ import { Link } from 'react-router-dom';
 import { SearchData } from '../../Data/data';
 
 const CheckOutRooms = () => {
-  const [todayDate, setTodayDate] = useState('');
+  const [todayDate, setTodayDate] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [guests, setGuests] = useState(''); // State for user input of guests
+  const [guests, setGuests] = useState(""); // State for user input of guests
   const [filteredRooms, setFilteredRooms] = useState([]); // State for filtered rooms
   const [selectedRoom, setSelectedRoom] = useState(null); // State for the selected room
+  const [checkIn, setCheckIn] = useState("");
+  const [checkOut, setCheckOut] = useState("");
+  const [promo, setPromo] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const today = new Date();
     const year = today.getFullYear();
-    const month = String(today.getMonth() + 1).padStart(2, '0');
-    const day = String(today.getDate()).padStart(2, '0');
+    const month = String(today.getMonth() + 1).padStart(2, "0");
+    const day = String(today.getDate()).padStart(2, "0");
     setTodayDate(`${year}-${month}-${day}`);
   }, []);
 
@@ -27,18 +31,28 @@ const CheckOutRooms = () => {
 
   const closeModal = () => {
     setIsModalOpen(false);
-    setSelectedRoom(null); 
+    setSelectedRoom(null);
   };
 
   const handleBookNow = () => {
+    if (!checkIn || !checkOut || !guests) {
+      setError("Please fill in all required fields.");
+      return;
+    }
+    setError(""); // Clear error if everything is filled
+
+    // Filter rooms based on the number of guests
     const numGuests = Number(guests);
     if (!isNaN(numGuests) && numGuests > 0) {
-      // Filter rooms based on the number of guests
-      const filtered = SearchData.filter(room => Number(room.Guests) === numGuests);
+      const filtered = SearchData.filter(
+        (room) => Number(room.Guests) === numGuests
+      );
       setFilteredRooms(filtered);
     } else {
-      setFilteredRooms([]); // Clear the list if input is invalid or empty
+      setFilteredRooms([]);
     }
+
+   
   };
 
   
@@ -70,140 +84,168 @@ const CheckOutRooms = () => {
       </div>
 
       <div className="mt-10 mb-10 px-4">
-        <div className="container mx-auto border h-auto sm:h-28 flex flex-col sm:flex-row items-center justify-between p-4 bg-gray-100 rounded-lg gap-4">
-          <div className="flex flex-col items-start w-full sm:w-1/5">
-            <label htmlFor="checkIn" className="text-sm font-semibold mb-1">
-              Check-in <span className="text-gray-400">(i)</span>
-            </label>
-            <input
-              type="date"
-              id="checkIn"
-              className="border rounded-md w-full p-2 text-sm"
-              min={todayDate}
-            />
-          </div>
-
-          <div className="flex flex-col items-start w-full sm:w-1/5">
-            <label htmlFor="checkOut" className="text-sm font-semibold mb-1">
-              Check-out
-            </label>
-            <input
-              type="date"
-              id="checkOut"
-              className="border rounded-md w-full p-2 text-sm"
-              min={todayDate}
-            />
-          </div>
-
-          <div className="flex flex-col items-start w-full sm:w-1/5">
-            <label htmlFor="guests" className="text-sm font-semibold mb-1">
-              Guests
-            </label>
-            <input
-              type="number"
-              id="guests"
-              value={guests}
-              onChange={(e) => setGuests(e.target.value)}
-              placeholder="1"
-              className="border rounded-md w-full p-2 text-sm"
-              min="1"
-            />
-          </div>
-
-          {/* Promo Field */}
-          <div className="flex flex-col items-start w-full sm:w-1/5">
-            <label htmlFor="promo" className="text-sm font-semibold mb-1">
-              Promo
-            </label>
-            <input
-              type="text"
-              id="promo"
-              className="border rounded-md w-full p-2 text-sm"
-            />
-          </div>
-
-          <button
-            onClick={handleBookNow}
-            className="bg-blue-600 text-white font-semibold py-2 px-6 sm:mt-6 rounded-lg hover:bg-blue-400 w-full sm:w-auto"
-          >
-            Book Now
-          </button>
+      <div className="container mx-auto border h-auto flex flex-col sm:flex-row items-center justify-between p-4 bg-gray-100 rounded-lg gap-4">
+        {/* Check-in Field */}
+        <div className="flex flex-col items-start w-full sm:w-1/5">
+          <label htmlFor="checkIn" className="text-sm font-semibold mb-1">
+            Check-in <span className="text-gray-400">(i)</span>
+          </label>
+          <input
+            type="date"
+            id="checkIn"
+            className="border rounded-md w-full p-2 text-sm"
+            min={todayDate}
+            value={checkIn}
+            onChange={(e) => setCheckIn(e.target.value)}
+          />
         </div>
+
+        {/* Check-out Field */}
+        <div className="flex flex-col items-start w-full sm:w-1/5">
+          <label htmlFor="checkOut" className="text-sm font-semibold mb-1">
+            Check-out
+          </label>
+          <input
+            type="date"
+            id="checkOut"
+            className="border rounded-md w-full p-2 text-sm"
+            min={checkIn || todayDate}
+            value={checkOut}
+            onChange={(e) => setCheckOut(e.target.value)}
+          />
+        </div>
+
+        {/* Guests Field */}
+        <div className="flex flex-col items-start w-full sm:w-1/5">
+          <label htmlFor="guests" className="text-sm font-semibold mb-1">
+            Guests
+          </label>
+          <input
+            type="number"
+            id="guests"
+            placeholder="1"
+            className="border rounded-md w-full p-2 text-sm"
+            min="1"
+            value={guests}
+            onChange={(e) => setGuests(e.target.value)}
+          />
+        </div>
+
+        {/* Promo Code Field */}
+        <div className="flex flex-col items-start w-full sm:w-1/5">
+          <label htmlFor="promo" className="text-sm font-semibold mb-1">
+            Promo
+          </label>
+          <input
+            type="text"
+            id="promo"
+            className="border rounded-md w-full p-2 text-sm"
+            value={promo}
+            onChange={(e) => setPromo(e.target.value)}
+          />
+        </div>
+
+        {/* Book Now Button */}
+        <button
+          onClick={handleBookNow}
+          className="bg-green-600 text-white font-semibold py-2 px-6 sm:mt-6 rounded-lg hover:bg-green-700 w-full sm:w-auto"
+        >
+          Book Now
+        </button>
+      </div>
+      {error && <p className="text-red-500 text-sm mt-2 text-center">{error}</p>}
+
+      
       </div>
 
-      <section className="py-10 bg-gray-100 px-4">
-        {/* Show only filtered rooms after clicking the button */}
-        {filteredRooms.length > 0 && filteredRooms.map((room, index) => (
-          <div key={room.id} className="container mx-auto border rounded-lg shadow-lg overflow-hidden mb-6">
-            <div className="grid grid-cols-1 sm:grid-cols-5 gap-4">
-              <div className="sm:col-span-2 relative">
-                <img
-                  src={room.image}
-                  alt="Room"
-                  className="w-full h-64 object-cover"
-                />
-                <button
-                  onClick={() => openModal(room)}
-                  className="absolute bottom-2 right-2 bg-black text-white p-2 rounded-full"
-                >
-                  📷
-                </button>
-              </div>
-
-              <div className="sm:col-span-3 bg-white p-4 sm:p-6">
-                <div className="flex justify-between items-center">
-                  <h2 className="text-lg sm:text-xl font-semibold">
-                    Best Available Rate
-                  </h2>
-                  <p className="text-gray-500">USD {room.price}</p>
-                </div>
-
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-4">
-                  <div>
-                    <p className="text-sm font-medium">Guest ({room.Guests})</p>
-                    <div className="flex items-center mt-2">
-                      <span className="text-lg">👤</span>
-                    </div>
-                  </div>
-
-                  <div>
-                    <p className="text-sm font-medium">Booking Policy</p>
-                    <a href="#" className="text-blue-600 mt-2 block">
-                      View Details
-                    </a>
-                  </div>
-
-                  <div>
-                    <p className="text-sm text-gray-500">475.00 Avg/night</p>
-                    <p className="text-sm text-gray-500">
-                      + 123.50 taxes and charges
-                    </p>
-                  </div>
-
-                  <div>
-                    <p className="text-sm font-medium">No of Room(s)</p>
-                    <select className="w-full mt-2 border rounded-lg p-2 text-sm">
-                      <option>0</option>
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                    </select>
-                  </div>
-                </div>
-                <Link to="/CustomerInfo">
-                <button  className="mt-6 border bg-black hover:bg-slate-300 hover:text-black text-white py-2 px-10 rounded w-full sm:w-auto">
-                  Book Now
-                </button>
-                </Link>
-              </div>
-            </div>
-
-            <div className="p-4 bg-gray-50">
-              <h3 className="text-lg font-semibold">{room.name}</h3>
-            </div>
+      <section className="py-10 px-4 bg-gray-100">
+  {/* Show only filtered rooms after clicking the button */}
+  {filteredRooms.length > 0 &&
+    filteredRooms.map((room) => (
+      <div
+        key={room.id}
+        className="container mx-auto border rounded-lg shadow-xl overflow-hidden mb-6 bg-white"
+      >
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+          {/* Room Image Section */}
+          <div className="lg:col-span-2 relative">
+            <img
+              src={room.image}
+              alt="Room"
+              className="w-full h-64 object-cover rounded-t-lg lg:rounded-l-lg lg:rounded-t-none"
+            />
+            <button
+              onClick={() => openModal(room)}
+              className="absolute bottom-3 right-3 bg-black text-white p-2 rounded-full hover:bg-gray-800 transition shadow-lg"
+            >
+              📷
+            </button>
           </div>
-        ))}
-      </section>
+
+          {/* Room Details Section */}
+          <div className="lg:col-span-3 p-6">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center">
+              <h2 className="text-xl font-bold text-gray-900 tracking-wide">
+                Best Available Rate
+              </h2>
+              <p className="text-xl text-gray-700 font-semibold">
+                USD {room.price}
+              </p>
+            </div>
+
+            {/* Room Features */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-4">
+              {/* Guests */}
+              <div>
+                <p className="text-sm font-semibold text-gray-700">Guests</p>
+                <div className="flex items-center mt-2 text-xl font-semibold text-gray-900">
+                  👤 {room.Guests}
+                </div>
+              </div>
+
+              {/* Booking Policy */}
+              <div>
+                <p className="text-sm font-semibold text-gray-700">Booking Policy</p>
+                <a href="#" className="text-blue-600 mt-2 block font-medium hover:underline">
+                  View Details
+                </a>
+              </div>
+
+              {/* Price Breakdown */}
+              <div>
+                <p className="text-sm text-gray-600">475.00 Avg/night</p>
+                <p className="text-sm text-gray-600">+ 123.50 taxes & fees</p>
+              </div>
+
+              {/* Room Selection */}
+              <div>
+                <p className="text-sm font-semibold text-gray-700">No of Room(s)</p>
+                <select className="w-full mt-2 border rounded-lg p-2 text-sm bg-gray-50 focus:ring-2 focus:ring-blue-500">
+                  <option>0</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                </select>
+              </div>
+            </div>
+
+            {/* Book Now Button */}
+            <Link to="/CustomerInfo">
+              <button className="mt-6 w-full sm:w-auto bg-black text-white font-semibold py-2 px-6 rounded-lg transition hover:bg-gray-800 hover:shadow-lg">
+                Book Now
+              </button>
+            </Link>
+          </div>
+        </div>
+
+        {/* Room Name */}
+        <div className="p-4 bg-gray-50 border-t">
+          <h3 className="text-lg font-bold text-gray-800">{room.name}</h3>
+        </div>
+      </div>
+    ))}
+</section>
+
 
       {/* Modal to display selected room details */}
       {isModalOpen && selectedRoom && (
@@ -211,7 +253,7 @@ const CheckOutRooms = () => {
           <div className="bg-white rounded-lg shadow-lg overflow-hidden w-full max-w-3xl relative">
             <button
               onClick={closeModal}
-              className="absolute top-4 right-4 text-black text-3xl hover:text-red-500"
+              className="absolute top-4 right-4 text-white text-3xl hover:text-red-500"
             >
               <IoClose />
             </button>
