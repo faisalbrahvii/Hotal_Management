@@ -68,27 +68,28 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Menu */}
-      <div className={`fixed top-0 right-0 w-[70%] h-full bg-black text-white transition-transform transform ${menuOpen ? "translate-x-0" : "translate-x-full"} md:hidden`}>
-        <div className="flex flex-col items-center justify-center h-full gap-6 text-lg">
-          <Link to="/" onClick={() => setMenuOpen(false)} className="hover:text-yellow-400">Home</Link>
-          <Link to="/Our_Amenities" onClick={() => setMenuOpen(false)} className="hover:text-yellow-400">Amenities</Link>
-          <Link to="/Gallery" onClick={() => setMenuOpen(false)} className="hover:text-yellow-400">Gallery</Link>
-          <Link to="/CheckoutRoom" onClick={() => setMenuOpen(false)} className="hover:text-yellow-400">Rooms</Link>
-          <Link to="/About" onClick={() => setMenuOpen(false)} className="hover:text-yellow-400">About Us</Link>
-          <Link to="/Blog" onClick={() => setMenuOpen(false)} className="hover:text-yellow-400">Blog</Link>
-          <Link to="/Contact" onClick={() => setMenuOpen(false)} className="hover:text-yellow-400">Contact</Link>
+      <div className={`fixed top-0 left-0 w-full h-full bg-black bg-opacity-90 backdrop-blur-md text-white transition-all transform ${menuOpen ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"} md:hidden`}>
+  <div className="flex flex-col items-center justify-center h-full gap-8 text-2xl font-medium">
+    <Link to="/" onClick={() => setMenuOpen(false)} className="hover:text-yellow-400 transition">Home</Link>
+    <Link to="/Our_Amenities" onClick={() => setMenuOpen(false)} className="hover:text-yellow-400 transition">Amenities</Link>
+    <Link to="/Gallery" onClick={() => setMenuOpen(false)} className="hover:text-yellow-400 transition">Gallery</Link>
+    <Link to="/CheckoutRoom" onClick={() => setMenuOpen(false)} className="hover:text-yellow-400 transition">Rooms</Link>
+    <Link to="/About" onClick={() => setMenuOpen(false)} className="hover:text-yellow-400 transition">About Us</Link>
+    <Link to="/Blog" onClick={() => setMenuOpen(false)} className="hover:text-yellow-400 transition">Blog</Link>
+    <Link to="/Contact" onClick={() => setMenuOpen(false)} className="hover:text-yellow-400 transition">Contact</Link>
 
-          <button 
-            onClick={() => {
-              openModal();
-              setMenuOpen(false);
-            }} 
-            className="bg-yellow-500 px-6 py-2 rounded-lg font-semibold hover:bg-yellow-600 transition"
-          >
-            Register
-          </button>
-        </div>
-      </div>
+    <button 
+      onClick={() => {
+        openModal();
+        setMenuOpen(false);
+      }} 
+      className="bg-yellow-500 px-8 py-3 rounded-lg font-semibold text-lg hover:bg-yellow-600 transition"
+    >
+      Register
+    </button>
+  </div>
+</div>
+
     </header>
   );
 };
