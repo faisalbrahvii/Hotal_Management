@@ -38,7 +38,7 @@ const Blog = () => {
 
           {/* Additional Info */}
           <p className="mt-4 text-sm text-gray-300">
-            No spam, only valuable content. Unsubscribe anytime.
+            No spam, only valuable content. Unsubscribe anytime..
           </p>
         </div>
       </div>
