@@ -17,7 +17,7 @@ const Navbar = () => {
   }, []);
 
   const openModal = () => {
-    navigate("/register"); // Navigate to the Register page
+    navigate("/register"); 
   };
 
   return (
