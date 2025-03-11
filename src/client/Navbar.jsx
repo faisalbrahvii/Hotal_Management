@@ -10,13 +10,6 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (menuOpen) {
-      document.body.style.overflow = "hidden"; // Disable scrolling
-    } else {
-      document.body.style.overflow = "auto"; // Enable scrolling when closed
-    }
-  }, [menuOpen]);
-  useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
@@ -75,29 +68,27 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Menu */}
-      <div className={`fixed top-0 left-0 w-full h-full bg-black bg-opacity-90 backdrop-blur-md text-white transition-transform duration-300 transform ${menuOpen ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"} md:hidden z-50`}>
-      <div className="flex flex-col items-center justify-center h-full gap-8 text-2xl font-medium">
-        <button onClick={() => setMenuOpen(false)} className="absolute top-6 right-6 text-3xl">✖</button>
+      <div className={`fixed top-0 left-0 w-full h-full bg-black bg-opacity-90 backdrop-blur-md text-white transition-all transform ${menuOpen ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"} md:hidden`}>
+  <div className="flex flex-col items-center justify-center h-full gap-8 text-2xl font-medium">
+    <Link to="/" onClick={() => setMenuOpen(false)} className="hover:text-yellow-400 transition">Home</Link>
+    <Link to="/Our_Amenities" onClick={() => setMenuOpen(false)} className="hover:text-yellow-400 transition">Amenities</Link>
+    <Link to="/Gallery" onClick={() => setMenuOpen(false)} className="hover:text-yellow-400 transition">Gallery</Link>
+    <Link to="/CheckoutRoom" onClick={() => setMenuOpen(false)} className="hover:text-yellow-400 transition">Rooms</Link>
+    <Link to="/About" onClick={() => setMenuOpen(false)} className="hover:text-yellow-400 transition">About Us</Link>
+    <Link to="/Blog" onClick={() => setMenuOpen(false)} className="hover:text-yellow-400 transition">Blog</Link>
+    <Link to="/Contact" onClick={() => setMenuOpen(false)} className="hover:text-yellow-400 transition">Contact</Link>
 
-        <a href="/" onClick={() => setMenuOpen(false)} className="hover:text-yellow-400 transition">Home</a>
-        <a href="/Our_Amenities" onClick={() => setMenuOpen(false)} className="hover:text-yellow-400 transition">Amenities</a>
-        <a href="/Gallery" onClick={() => setMenuOpen(false)} className="hover:text-yellow-400 transition">Gallery</a>
-        <a href="/CheckoutRoom" onClick={() => setMenuOpen(false)} className="hover:text-yellow-400 transition">Rooms</a>
-        <a href="/About" onClick={() => setMenuOpen(false)} className="hover:text-yellow-400 transition">About Us</a>
-        <a href="/Blog" onClick={() => setMenuOpen(false)} className="hover:text-yellow-400 transition">Blog</a>
-        <a href="/Contact" onClick={() => setMenuOpen(false)} className="hover:text-yellow-400 transition">Contact</a>
-
-        <button 
-          onClick={() => {
-            openModal();
-            setMenuOpen(false);
-          }} 
-          className="bg-yellow-500 px-8 py-3 rounded-lg font-semibold text-lg hover:bg-yellow-600 transition"
-        >
-          Register
-        </button>
-      </div>
-    </div>
+    <button 
+      onClick={() => {
+        openModal();
+        setMenuOpen(false);
+      }} 
+      className="bg-yellow-500 px-8 py-3 rounded-lg font-semibold text-lg hover:bg-yellow-600 transition"
+    >
+      Register
+    </button>
+  </div>
+</div>
 
     </header>
   );
