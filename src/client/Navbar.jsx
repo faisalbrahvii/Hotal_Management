@@ -47,8 +47,6 @@ const Navbar = () => {
             {dropdownOpen && (
               <div className="absolute top-10 left-0 bg-white shadow-lg rounded-md overflow-hidden w-40">
                 <Link to="/About" className="block px-4 py-2 text-gray-800 hover:bg-yellow-100">About Us</Link>
-                <Link to="/Blog" className="block px-4 py-2 text-gray-800 hover:bg-yellow-100">Blog</Link>
-                <Link to="/Contact" className="block px-4 py-2 text-gray-800 hover:bg-yellow-100">Contact</Link>
               </div>
             )}
           </div>
@@ -75,8 +73,6 @@ const Navbar = () => {
     <Link to="/Gallery" onClick={() => setMenuOpen(false)} className="hover:text-green-700 transition">Gallery</Link>
     <Link to="/CheckoutRoom" onClick={() => setMenuOpen(false)} className="hover:text-green-700 transition">Rooms</Link>
     <Link to="/About" onClick={() => setMenuOpen(false)} className="hover:text-green-700 transition">About Us</Link>
-    <Link to="/Blog" onClick={() => setMenuOpen(false)} className="hover:text-green-700 transition">Blog</Link>
-    <Link to="/Contact" onClick={() => setMenuOpen(false)} className="hover:text-green-700 transition">Contact</Link>
 
     <button 
       onClick={() => {
