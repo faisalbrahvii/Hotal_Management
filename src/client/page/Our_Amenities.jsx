@@ -196,52 +196,55 @@ const Our_Amenities = () => {
         </div>
       </div>
     </div>
-          <div className="w-full bg-gray-100 py-12">
-      
-      <div className="text-center">
-        <p className="font-semibold text-lg text-slate-500 uppercase tracking-wide">
-          Amenities
-        </p>
-        <h1 className="text-3xl font-light text-gray-800 mt-2">
-          Follow Us to Discover Amazing Stories
-        </h1>
-      </div>
+    <div className="w-full bg-gray-100 py-12">
+  {/* Header */}
+  <div className="text-center px-4">
+    <p className="font-semibold text-lg text-slate-500 uppercase tracking-wide">
+      Amenities
+    </p>
+    <h1 className="text-2xl sm:text-3xl font-light text-gray-800 mt-2">
+      Follow Us to Discover Amazing Stories
+    </h1>
+  </div>
 
-      <div className="w-full mt-10 px-6">
-        <Swiper
-          slidesPerView={1}
-          spaceBetween={20}
-          breakpoints={{
-            640: { slidesPerView: 1 },
-            768: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 },
-          }}
-          loop={true}
-          autoplay={{ delay: 2500, disableOnInteraction: false }}
-          navigation={true}
-          pagination={{ clickable: true }}
-          modules={[Autoplay, Navigation, Pagination]}
-          className="w-full"
-        >
-          {images.map((img, index) => (
-            <SwiperSlide key={index}>
-              <div className="flex justify-center">
-                <img
-                  src={img}
-                  alt={`Amenity ${index + 1}`}
-                  className="w-full h-64 object-cover rounded-lg shadow-md"
-                />
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
-      <div className='flex justify-center mt-10 '>
-      <button className="bg-green-600 hover:bg-green-700 text-white text-sm font-semibold rounded-lg px-20 py-2 transition duration-300 shadow-md">
-            Follow Us
-          </button>
-      </div>
-    </div>
+  <div className="w-full mt-10 px-4 sm:px-6">
+    <Swiper
+      slidesPerView={1} 
+      spaceBetween={20}
+      breakpoints={{
+        640: { slidesPerView: 1 },
+        768: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 },
+      }}
+      loop={true}
+      autoplay={{ delay: 2500, disableOnInteraction: false }}
+      navigation={true}
+      pagination={{ clickable: true }}
+      modules={[Autoplay, Navigation, Pagination]}
+      className="w-full"
+    >
+      {images.map((img, index) => (
+        <SwiperSlide key={index}>
+          <div className="flex justify-center">
+            <img
+              src={img}
+              alt={`Amenity ${index + 1}`}
+              className="w-full h-48 sm:h-64 object-cover rounded-lg shadow-md"
+            />
+          </div>
+        </SwiperSlide>
+      ))}
+    </Swiper>
+  </div>
+
+  {/* Follow Button */}
+  <div className="flex justify-center mt-10">
+    <button className="bg-green-600 hover:bg-green-700 text-white text-sm font-semibold rounded-lg px-16 sm:px-20 py-2 transition duration-300 shadow-md">
+      Follow Us
+    </button>
+  </div>
+</div>
+
 
 
 
