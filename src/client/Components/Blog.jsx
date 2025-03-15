@@ -1,36 +1,39 @@
-  import React from 'react';
-  import HeroImage from '../../assets/img/Hero.jpeg';
+import React from "react";
+import HeroImage from "../../assets/img/Hero.jpeg";
 
-  const Blog = () => {
-    return (
-      <div className="flex items-center justify-center w-full">
-        <div
-          name="home"
-          className="container mx-4 sm:mx-8 lg:mx-16 rounded-lg bg-zinc-200 overflow-hidden"
-          style={{
-            backgroundImage: `url(${HeroImage})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-          }}
-        >
-          <div className="flex flex-col justify-center items-center text-center p-8 lg:p-12 h-full">
-            <div className="bg-black/50 text-white p-8 rounded-lg shadow-lg max-w-3xl w-full">
-              <p className="font-bold text-slate-800 text-lg sm:text-xl md:text-2xl">
-                STORIES DELIVERED STRAIGHT
-              </p>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif mt-4 text-slate-950">
-                Sign up for exclusive offers from us
-              </h1>
+const Blog = () => {
+  return (
+    <section className="relative w-full h-[60vh] flex items-center justify-center bg-gray-900 text-white">
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center opacity-40"
+        style={{ backgroundImage: `url(${HeroImage})` }}
+      ></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/70"></div>
 
-              <button className="mt-6 py-2 px-8 sm:px-10 md:px-14 bg-green-600 text-white font-semibold transition-all hover:bg-green-700 rounded-full shadow-md hover:shadow-lg transform hover:scale-105">
-                Login
-              </button>
-            </div>
-          </div>
+      {/* Content */}
+      <div className="relative z-10 text-center px-6 sm:px-12">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold">
+          Get Exclusive Deals & Updates
+        </h2>
+        <p className="text-lg sm:text-xl text-gray-300 mt-4">
+          Subscribe to our newsletter and stay updated with our latest offers and news.
+        </p>
+
+        {/* Email Subscription Form */}
+        <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <input
+            type="email"
+            placeholder="Enter your email"
+            className="w-full sm:w-80 px-4 py-3 text-gray-800 rounded-full outline-none"
+          />
+          <button className="bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-3 rounded-full transition-all shadow-md hover:shadow-lg">
+            Subscribe
+          </button>
         </div>
       </div>
-    );
-  };
+    </section>
+  );
+};
 
-  export default Blog;
+export default Blog;
