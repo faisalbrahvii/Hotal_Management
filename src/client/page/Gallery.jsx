@@ -48,7 +48,7 @@ const Gallery = () => {
       </div>
 
       {/* Gallery Section */}
-      <div ref={gallery} className="container mx-auto py-12 px-4 sm:px-6">
+      <div ref={gallery} className=" mx-auto py-12 px-4 sm:px-6">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <h2 className="text-3xl font-bold text-gray-800 text-center md:text-left">
             Our Gallery

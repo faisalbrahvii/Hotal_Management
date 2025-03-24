@@ -17,16 +17,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination, Navigation, Autoplay , EffectFade  } from "swiper/modules";
+import { images  } from '../../Data/amenities';
 const Our_Amenities = () => {
   
 
-  const images = [
-    "https://source.unsplash.com/800x500/?hotel,room",
-    "https://source.unsplash.com/800x500/?resort,pool",
-    "https://source.unsplash.com/800x500/?spa,wellness",
-    "https://source.unsplash.com/800x500/?luxury,hotel",
-    "https://source.unsplash.com/800x500/?beach,resort",
-  ];
+ 
 
   const heroImages = [
    "https://source.unsplash.com/800x500/?hotel,room",
@@ -249,7 +244,7 @@ const Our_Amenities = () => {
         <SwiperSlide key={index}>
           <div className="flex justify-center">
             <img
-              src={img}
+              src={img.roomImage  }
               alt={`Amenity ${index + 1}`}
               className="w-full h-48 sm:h-64 object-cover rounded-lg shadow-md"
             />
