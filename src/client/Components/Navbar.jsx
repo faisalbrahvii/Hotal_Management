@@ -55,8 +55,8 @@ const Navbar = () => {
       <div className="container mx-auto flex items-center justify-between py-4 px-6 lg:px-12">
         <nav className="hidden md:flex items-center gap-8 text-white">
           <Link to="/" className="hover:text-yellow-400 transition">Home</Link>
-          <Link to="/rooms" className="hover:text-yellow-400 transition">Rooms</Link>
-          <Link to="/amenities" className="hover:text-yellow-400 transition">Amenities</Link>
+          <Link to="/CheckoutRoom" className="hover:text-yellow-400 transition">BookRooms</Link>
+          <Link to="/Our_Amenities" className="hover:text-yellow-400 transition">Our Amenities</Link>
         </nav>
 
         <Link to="/" className="text-white text-3xl font-bold tracking-wide">
@@ -98,7 +98,7 @@ const Navbar = () => {
   </h2>
 
   <div className="flex flex-col items-center gap-4 text-2xl font-medium">
-    {["Home", "Rooms", "Amenities", "Gallery", "About Us"].map((item, index) => (
+    {["Home", "BookRooms", "Our_Amenities", "Gallery", "About Us"].map((item, index) => (
       <React.Fragment key={index}>
         <Link
           to={`/${item.toLowerCase().replace(" ", "")}`}
