@@ -33,13 +33,16 @@ const Hero = () => {
       {/* Hero Content */}
       <div className="relative z-10 max-w-3xl px-6 sm:px-12">
         <h1 className="text-white text-4xl sm:text-5xl md:text-6xl font-bold leading-tight drop-shadow-lg">
-          Welcome to <span className="text-green-400">Paradise</span>
+          Welcome to <span className="text-yellow-400">Paradise</span>
         </h1>
         <p className="text-white/80 text-lg sm:text-xl mt-4">
           Escape to luxury with breathtaking views and five-star services.
         </p>
-        <button className="mt-6 px-8 py-3 bg-green-600 text-white font-semibold text-lg rounded-full shadow-lg hover:bg-green-700 hover:scale-105 transition-all duration-300">
-          Reserve Now
+        <button
+    className="relative overflow-hidden bg-yellow-500 hover:bg-yellow-600 text-black font-semibold rounded-lg px-8 py-3 transition-all group mt-4 animate-fadeIn pulse-effect"
+  >
+    Reserve Now
+    <span className="absolute inset-0 bg-yellow-400 opacity-10 group-hover:opacity-30 transition-all"></span>
         </button>
       </div>
 

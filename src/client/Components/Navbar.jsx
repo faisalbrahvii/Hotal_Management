@@ -98,30 +98,37 @@ const Navbar = () => {
   </h2>
 
   <div className="flex flex-col items-center gap-4 text-2xl font-medium">
-    {["Home", "BookRooms", "Our_Amenities", "Gallery", "About Us"].map((item, index) => (
-      <React.Fragment key={index}>
-        <Link
-          to={`/${item.toLowerCase().replace(" ", "")}`}
-          onClick={() => setMenuOpen(false)}
-          className="hover:text-yellow-400 transition-all duration-300 transform hover:scale-110 animate-fadeIn relative group"
-          style={{ animationDelay: `${index * 0.1}s` }}
-        >
-          {item}
-          <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-yellow-400 transition-all duration-300 group-hover:w-full"></span>
-        </Link>
+  {[
+    { name: "Home", path: "/" },
+    { name: "BookRooms", path: "/CheckoutRoom" },
+    { name: "Our_Amenities", path: "/Our_Amenities" },
+    { name: "Gallery", path: "/Gallery" },
+    { name: "About Us", path: "/About" }
+  ].map((item, index) => (
+    <React.Fragment key={index}>
+      <Link
+        to={item.path}
+        onClick={() => setMenuOpen(false)}
+        className="hover:text-yellow-400 transition-all duration-300 transform hover:scale-110 animate-fadeIn relative group"
+        style={{ animationDelay: `${index * 0.1}s` }}
+      >
+        {item.name}
+        <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-yellow-400 transition-all duration-300 group-hover:w-full"></span>
+      </Link>
 
-        {index !== 4 && <hr className="w-24 border-t border-white/30 animate-slideIn" />}
-      </React.Fragment>
-    ))}
+      {index !== 4 && <hr className="w-24 border-t border-white/30 animate-slideIn" />}
+    </React.Fragment>
+  ))}
 
-    <button
-      onClick={openModal}
-      className="relative overflow-hidden bg-yellow-500 hover:bg-yellow-600 text-black font-semibold rounded-lg px-8 py-3 transition-all group mt-4 animate-fadeIn pulse-effect"
-    >
-      Register
-      <span className="absolute inset-0 bg-yellow-400 opacity-10 group-hover:opacity-30 transition-all"></span>
-    </button>
-  </div>
+  <button
+    onClick={openModal}
+    className="relative overflow-hidden bg-yellow-500 hover:bg-yellow-600 text-black font-semibold rounded-lg px-8 py-3 transition-all group mt-4 animate-fadeIn pulse-effect"
+  >
+    Register
+    <span className="absolute inset-0 bg-yellow-400 opacity-10 group-hover:opacity-30 transition-all"></span>
+  </button>
+</div>
+
 </div>
 
     </header>
