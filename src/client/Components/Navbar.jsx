@@ -1,63 +1,79 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { RiMenu3Fill, RiCloseFill } from 'react-icons/ri';
-import { MdKeyboardArrowDown } from 'react-icons/md';
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { RiMenu3Fill, RiCloseFill } from "react-icons/ri";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [greeting, setGreeting] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const getPakistanTime = () => {
+      const pakistanTime = new Intl.DateTimeFormat('en-US', {
+        timeZone: 'Asia/Karachi',
+        hour: 'numeric',
+        hour12: false,
+      }).format(new Date());
+
+      const hour = parseInt(pakistanTime, 10);
+      if (hour >= 5 && hour < 12) {
+        setGreeting("Good Morning! ☀️");
+      } else if (hour >= 12 && hour < 17) {
+        setGreeting("Good Afternoon! 🌤");
+      } else if (hour >= 17 && hour < 21) {
+        setGreeting("Good Evening! 🌙");
+      } else {
+        setGreeting("Good Night! 🌌");
+      }
+    };
+
+    getPakistanTime();
+    const interval = setInterval(getPakistanTime, 60000); 
+    return () => clearInterval(interval);
   }, []);
 
   const openModal = () => {
     navigate("/register");
+    setMenuOpen(false);
   };
 
   return (
-    <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-black/80 shadow-lg' : 'bg-transparent'}`}>
+    <header
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        scrolled ? "bg-black/80 shadow-lg" : "bg-transparent"
+      }`}
+    >
       <div className="container mx-auto flex items-center justify-between py-4 px-6 lg:px-12">
-        {/* Logo */}
+        <nav className="hidden md:flex items-center gap-8 text-white">
+          <Link to="/" className="hover:text-yellow-400 transition">Home</Link>
+          <Link to="/rooms" className="hover:text-yellow-400 transition">Rooms</Link>
+          <Link to="/amenities" className="hover:text-yellow-400 transition">Amenities</Link>
+        </nav>
+
         <Link to="/" className="text-white text-3xl font-bold tracking-wide">
-          LuxuryStay<span className="text-green-700">.</span>
+          LuxuryStay<span className="text-yellow-400">.</span>
         </Link>
 
-        {/* Desktop Menu */}
         <nav className="hidden md:flex items-center gap-8 text-white">
-          <Link to="/" className="hover:text-green-700 transition">Home</Link>
-          <Link to="/Our_Amenities" className="hover:text-green-700 transition">Amenities</Link>
-          <Link to="/Gallery" className="hover:text-green-700 transition">Gallery</Link>
-          <Link to="/CheckoutRoom" className="hover:text-green-700 transition">Rooms</Link>
-          
-          {/* Dropdown Menu */}
-          <div className="relative">
-            <button 
-              onClick={() => setDropdownOpen(!dropdownOpen)} 
-              className="flex items-center gap-1 hover:text-green-700 transition"
-            >
-              More <MdKeyboardArrowDown size={20} />
-            </button>
-            {dropdownOpen && (
-              <div className="absolute top-10 left-0 bg-white shadow-lg rounded-md overflow-hidden w-40">
-                <Link to="/About" className="block px-4 py-2 text-gray-800 hover:bg-yellow-100">About Us</Link>
-              </div>
-            )}
-          </div>
-
-          {/* Register Button */}
-          <button onClick={openModal} className="bg-green-600 hover:bg-green-700 text-white text-sm sm:text-base font-bold rounded-lg px-6 py-3 transition duration-300 shadow-md">
+          <Link to="/gallery" className="hover:text-yellow-400 transition">Gallery</Link>
+          <Link to="/about" className="hover:text-yellow-400 transition">About Us</Link>
+          <button
+            onClick={openModal}
+            className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold rounded-lg px-6 py-2 transition-all"
+          >
             Register
           </button>
         </nav>
 
-        {/* Mobile Menu Button */}
         <div className="md:hidden text-white">
           <button onClick={() => setMenuOpen(!menuOpen)}>
             {menuOpen ? <RiCloseFill size={30} /> : <RiMenu3Fill size={30} />}
@@ -65,23 +81,45 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      <div className={`fixed top-0 left-0 w-full h-full bg-black bg-opacity-90 backdrop-blur-md text-white transition-all transform ${menuOpen ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"} md:hidden`}>
-  <div className="flex flex-col items-center justify-center h-full gap-8 text-2xl font-medium">
-    <Link to="/" onClick={() => setMenuOpen(false)} className="hover:text-green-700 transition">Home</Link>
-    <Link to="/Our_Amenities" onClick={() => setMenuOpen(false)} className="hover:text-green-700 transition">Amenities</Link>
-    <Link to="/Gallery" onClick={() => setMenuOpen(false)} className="hover:text-green-700 transition">Gallery</Link>
-    <Link to="/CheckoutRoom" onClick={() => setMenuOpen(false)} className="hover:text-green-700 transition">Rooms</Link>
-    <Link to="/About" onClick={() => setMenuOpen(false)} className="hover:text-green-700 transition">About Us</Link>
+      <div
+  className={`fixed top-0 left-0 w-full h-full bg-black/80 backdrop-blur-lg text-white transform transition-transform duration-500 ease-in-out ${
+    menuOpen ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
+  } md:hidden flex flex-col items-center justify-center`}
+>
+  <button
+    onClick={() => setMenuOpen(false)}
+    className="absolute top-6 right-6 text-white text-3xl hover:text-yellow-400 transition-all duration-300"
+  >
+    <RiCloseFill />
+  </button>
 
-    <button 
-      onClick={() => {
-        openModal();
-        setMenuOpen(false);
-      }} 
-      className="bg-green-600 hover:bg-green-700 text-white text-sm sm:text-base font-bold rounded-lg px-6 py-3 transition duration-300 shadow-md"
+  <h2 className="text-2xl font-semibold mb-4 animate-fadeIn">
+    {greeting}
+  </h2>
+
+  <div className="flex flex-col items-center gap-4 text-2xl font-medium">
+    {["Home", "Rooms", "Amenities", "Gallery", "About Us"].map((item, index) => (
+      <React.Fragment key={index}>
+        <Link
+          to={`/${item.toLowerCase().replace(" ", "")}`}
+          onClick={() => setMenuOpen(false)}
+          className="hover:text-yellow-400 transition-all duration-300 transform hover:scale-110 animate-fadeIn relative group"
+          style={{ animationDelay: `${index * 0.1}s` }}
+        >
+          {item}
+          <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-yellow-400 transition-all duration-300 group-hover:w-full"></span>
+        </Link>
+
+        {index !== 4 && <hr className="w-24 border-t border-white/30 animate-slideIn" />}
+      </React.Fragment>
+    ))}
+
+    <button
+      onClick={openModal}
+      className="relative overflow-hidden bg-yellow-500 hover:bg-yellow-600 text-black font-semibold rounded-lg px-8 py-3 transition-all group mt-4 animate-fadeIn pulse-effect"
     >
       Register
+      <span className="absolute inset-0 bg-yellow-400 opacity-10 group-hover:opacity-30 transition-all"></span>
     </button>
   </div>
 </div>
