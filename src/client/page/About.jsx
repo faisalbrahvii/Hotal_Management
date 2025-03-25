@@ -6,7 +6,7 @@ import { FaArrowRightLong } from "react-icons/fa6";
 import { IoMdMail } from "react-icons/io";
 import { IoCall } from "react-icons/io5";
 import { FaLocationDot } from "react-icons/fa6";
-
+import { DisplayCategories ,OurPartnerships ,FeatureProperties } from '../../Data/aboutUs';
 const About = () => {
 
   const ContactUs = useRef(null);
@@ -49,10 +49,13 @@ const About = () => {
       </div>
       <section className="px-4 py-8">
   <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-    <div
+    {
+      DisplayCategories.map((Cat)=>{
+        return(
+    <div key={Cat.CategoriesId}
       className="relative w-full h-52 rounded-lg overflow-hidden shadow-lg"
       style={{
-        backgroundImage: `url(${HeroImage})`,
+        backgroundImage: `url(${Cat.CategoryImage})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
@@ -60,40 +63,13 @@ const About = () => {
     >
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
       <div className="relative z-10 flex flex-col justify-center items-center h-full text-white text-center">
-        <h1 className="text-3xl md:text-4xl font-bold">1200 +</h1>
-        <p className="text-sm mt-2 font-medium">Companies affiliated with us</p>
+        <h1 className="text-3xl md:text-4xl font-bold">{Cat.CategoryCount}</h1>
+        <p className="text-sm mt-2 font-medium">{Cat.CategoryDes}</p>
       </div>
     </div>
-    <div
-      className="relative w-full h-52 rounded-lg overflow-hidden shadow-lg"
-      style={{
-        backgroundImage: `url(${HeroImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-      }}
-    >
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
-      <div className="relative z-10 flex flex-col justify-center items-center h-full text-white text-center">
-        <h1 className="text-3xl md:text-4xl font-bold">8M +</h1>
-        <p className="text-sm mt-2 font-medium">Happy Customers</p>
-      </div>
-    </div>
-    <div
-      className="relative w-full h-52 rounded-lg overflow-hidden shadow-lg"
-      style={{
-        backgroundImage: `url(${HeroImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-      }}
-    >
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
-      <div className="relative z-10 flex flex-col justify-center items-center h-full text-white text-center">
-        <h1 className="text-3xl md:text-4xl font-bold">10 +</h1>
-        <p className="text-sm mt-2 font-medium">Days of Service</p>
-      </div>
-    </div>
+        )
+      })
+    }
   </div>
 </section>
 
@@ -109,24 +85,11 @@ const About = () => {
   </div>
 
   <div className="grid grid-cols-3 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
-    <div className="border flex items-center justify-center bg-white rounded-xl shadow-md">
-      <img src={HeroImage} className="w-24" alt="" />
+    {OurPartnerships.map((Images) => (
+    <div key={Images.CategoriesId} className="border flex items-center justify-center bg-white rounded-xl shadow-md">
+      <img src={Images.CategoryImage  } className="w-24" alt="" />
     </div>
-    <div className="border flex items-center justify-center bg-white rounded-xl shadow-md">
-      <img src={HeroImage} className="w-24" alt="" />
-    </div>
-    <div className="border flex items-center justify-center bg-white rounded-xl shadow-md">
-      <img src={HeroImage} className="w-24" alt="" />
-    </div>
-    <div className="border flex items-center justify-center bg-white rounded-xl shadow-md">
-      <img src={HeroImage} className="w-24" alt="" />
-    </div>
-    <div className="border flex items-center justify-center bg-white rounded-xl shadow-md">
-      <img src={HeroImage} className="w-24" alt="" />
-    </div>
-    <div className="border flex items-center justify-center bg-white rounded-xl shadow-md">
-      <img src={HeroImage} className="w-24" alt="" />
-    </div>
+    ))}
   </div>
 </div>
 
@@ -141,51 +104,27 @@ const About = () => {
   </div>
 
   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-    <div
+    {FeatureProperties.map((index)=>{
+      return(
+        <div key={index.Id}
       className="relative h-80 rounded-xl overflow-hidden shadow-lg transform transition duration-300 hover:scale-105"
       style={{
-        backgroundImage: `url(${HeroImage})`,
+        backgroundImage: `url(${index.Image})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
       }}
     >
       <div className="absolute inset-0 bg-black/50 flex flex-col justify-end p-4 text-white">
-        <h1 className="font-semibold text-lg">Luxury Villa Retreat</h1>
-        <p className="text-sm mt-1">A perfect getaway for families and friends.</p>
-        <p className="font-bold text-lg mt-2">$ 1400.00</p>
+        <h1 className="font-semibold text-lg">{index.Name}</h1>
+        <p className="text-sm mt-1">{index.Des}</p>
+        <p className="font-bold text-lg mt-2">{index.Price}</p>
       </div>
     </div>
-    <div
-      className="relative h-80 rounded-xl overflow-hidden shadow-lg transform transition duration-300 hover:scale-105"
-      style={{
-        backgroundImage: `url(${HeroImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-      }}
-    >
-      <div className="absolute inset-0 bg-black/50 flex flex-col justify-end p-4 text-white">
-        <h1 className="font-semibold text-lg">CityScope</h1>
-        <p className="text-sm mt-1">A perfect getaway for families and friends.</p>
-        <p className="font-bold text-lg mt-2">$ 1400.00</p>
-      </div>
-    </div>
-    <div
-      className="relative h-80 rounded-xl overflow-hidden shadow-lg transform transition duration-300 hover:scale-105"
-      style={{
-        backgroundImage: `url(${HeroImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-      }}
-    >
-      <div className="absolute inset-0 bg-black/50 flex flex-col justify-end p-4 text-white">
-        <h1 className="font-semibold text-lg">Sea Side</h1>
-        <p className="text-sm mt-1">A perfect getaway for families and friends.</p>
-        <p className="font-bold text-lg mt-2">$ 1600.00</p>
-      </div>
-    </div>
+      )
+    })}
+    
+   
     <div
       className="relative h-80 rounded-xl overflow-hidden shadow-lg transform transition duration-300 hover:scale-105"
 
