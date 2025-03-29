@@ -59,7 +59,7 @@ export const DELUXE = [
 export const PEARL = [
     {
         id: 1,
-        name: 'PEARL Room 2',
+        name: 'PEARL Roomm 2',
         price: 30,
         bed: '2',
         size: '16x12',
@@ -135,9 +135,9 @@ export const EXECUTIVE = [
 export const SearchData = [
     {
         id: 1,
-        name: 'PEARL Room 3',
+        name: 'PEARL Roomm 3',
         price: 50,
-        bed: '2',
+        bed: '2',   
         size: '16x12',
         Guests: '1',
         image: userImage,

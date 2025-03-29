@@ -32,7 +32,7 @@ const router = createBrowserRouter([
       { path: "Gallery", element: <Gallery /> },
       { path: "About", element: <About /> },
       { path: "register", element: <RegisterModel  /> },
-      { path: "CustomerInfo", element: <CustomerInfo  /> },
+      { path: "CustomerInfo/:id", element: <CustomerInfo  /> },
       { path: "Our_Amenities", element: <Our_Amenities  /> },
     ]
   }

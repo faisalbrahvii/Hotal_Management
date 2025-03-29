@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import HeroImage from '../../assets/img/Hero.jpeg';
 import { IoClose } from "react-icons/io5";
 import { FaBed } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { SearchData } from '../../Data/data';
 
 const CheckOutRooms = () => {
@@ -39,9 +39,7 @@ const CheckOutRooms = () => {
       setError("Please fill in all required fields.");
       return;
     }
-    setError(""); // Clear error if everything is filled
-
-    // Filter rooms based on the number of guests
+    setError("");
     const numGuests = Number(guests);
     if (!isNaN(numGuests) && numGuests > 0) {
       const filtered = SearchData.filter(
@@ -55,6 +53,15 @@ const CheckOutRooms = () => {
    
   };
 
+  const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("userData")); 
+    if (user) {
+      setIsLoggedIn(true);
+    }
+  }, []); 
   
   return (
     <div>
@@ -218,23 +225,27 @@ const CheckOutRooms = () => {
               </div>
 
               {/* Room Selection */}
-              <div>
-                <p className="text-sm font-semibold text-gray-700">No of Room(s)</p>
-                <select className="w-full mt-2 border rounded-lg p-2 text-sm bg-gray-50 focus:ring-2 focus:ring-blue-500">
-                  <option>0</option>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                </select>
-              </div>
+
             </div>
 
             {/* Book Now Button */}
-            <Link to="/CustomerInfo">
-              <button className="mt-6 w-full sm:w-auto bg-black text-white font-semibold py-2 px-6 rounded-lg transition hover:bg-gray-800 hover:shadow-lg">
-                Book Now
-              </button>
-            </Link>
+           {isLoggedIn ? (
+        <Link to={`/CustomerInfo/${room.id}?checkIn=${checkIn}&checkOut=${checkOut}`}>
+          <button className="mt-6 w-full sm:w-auto bg-black text-white font-semibold py-2 px-6 rounded-lg transition hover:bg-gray-800 hover:shadow-lg">
+            Book Now
+          </button>
+        </Link>
+      ) : (
+        <button
+          onClick={() => navigate("/register")}
+          className="mt-6 w-full sm:w-auto bg-red-500 text-white font-semibold py-2 px-6 rounded-lg transition hover:bg-red-700 hover:shadow-lg"
+        >
+          Register to Book
+        </button>
+      )}
+    
+
+
           </div>
         </div>
 

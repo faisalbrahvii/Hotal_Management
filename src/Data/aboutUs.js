@@ -1,4 +1,10 @@
 import useImage from '../assets/img/imageone.jpg';
+import wp2 from '../assets/blog/wp2.png';
+import wp1 from '../assets/blog/wp1.png';
+import wp3 from '../assets/blog/wp3.png';
+import wp4 from '../assets/blog/wp4.jpg';
+import wp5 from '../assets/blog/wp5.jpg';
+import wp6 from '../assets/blog/wp6.jpg';
 
 
 export const DisplayCategories = [
@@ -6,19 +12,19 @@ export const DisplayCategories = [
         CategoriesId : 1,
         CategoryCount : "1200 +",
         CategoryDes : "Companies affiliated with us",
-        CategoryImage : useImage,
+        CategoryImage : wp2,
     },
     {
         CategoriesId : 2,
         CategoryCount : "8m +",
         CategoryDes : "Happy Customers",
-        CategoryImage : useImage,
+        CategoryImage : wp1,
     },
     {
         CategoriesId : 3,
         CategoryCount : "10m +",
         CategoryDes : "Day of service",
-        CategoryImage : useImage,
+        CategoryImage : wp3,
     },
 ];
 export const OurPartnerships = [
@@ -54,21 +60,21 @@ export const FeatureProperties = [
         Name : "Luxury Villa Retreat",
         Price : "$ 1400.00",
         Des : "A perfect getaway for families and friends.",
-        Image : useImage,
+        Image : wp4,
     },
     {
         Id : 2,
         Name : "CityScope",
         Price : "$ 1000.00",
         Des : "A perfect getaway for families and friends.",
-        Image : useImage,
+        Image : wp5,
     },
     {
         Id : 3,
         Name : "Sea Side",
         Price : "$ 1200.00",
         Des : "A perfect getaway for families and friends.",
-        Image : useImage,
+        Image : wp6,
     },
     
    

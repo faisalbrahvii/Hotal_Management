@@ -1,5 +1,5 @@
 import React from 'react';
-import HeroImage from '../../assets/img/Hero.jpeg';
+import HeroImage from '../../assets/img/imageone.jpg';
 
 const Categories = () => {
   return (

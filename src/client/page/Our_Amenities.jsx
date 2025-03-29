@@ -1,7 +1,9 @@
 import React from 'react'
-import HeroImage from '../../assets/img/imageone.jpg';
+import HeroImage from '../../assets/Our_Amenities/5.png';
 import HeroImage2 from '../../assets/img/Hero.jpeg';
 import HeroImage1 from '../../assets/img/Hero.jpeg';
+import mainImage from "../../assets/Our_Amenities/main.jpeg";
+
 import { IoPeopleSharp } from "react-icons/io5";
 import { FaBedPulse, FaBath, FaWifi, FaCalendarDays } from 'react-icons/fa6';
 import { CiWifiOn } from "react-icons/ci";
@@ -23,32 +25,29 @@ const Our_Amenities = () => {
 
  
 
-  const heroImages = [
-   "https://source.unsplash.com/800x500/?hotel,room",
-    "https://source.unsplash.com/800x500/?resort,pool",
-    "https://source.unsplash.com/800x500/?spa,wellness",
-  ];
+  const heroImages = [mainImage];
+
 
   return (
     <div>
       <div className="relative w-full min-h-screen">
       {/* Background Image Slider */}
       <Swiper
-        modules={[Autoplay, EffectFade]}
-        effect="fade"
-        autoplay={{ delay: 4000, disableOnInteraction: false }}
-        loop={true}
-        className="absolute inset-0 w-full h-full z-[-]"
-      >
-        {heroImages.map((image, index) => (
-          <SwiperSlide key={index}>
-            <div
-              className="w-full h-full bg-cover bg-center transition-all duration-700"
-              style={{ backgroundImage: `url(${image})` }}
-            />
-          </SwiperSlide>
-        ))}
-      </Swiper>
+  modules={[Autoplay, EffectFade]}
+  effect="fade"
+  autoplay={{ delay: 4000, disableOnInteraction: false }}
+  loop={true}
+  className="absolute inset-0 w-full h-full z-0"
+>
+  {heroImages.map((image, index) => (
+    <SwiperSlide key={index}>
+      <div
+        className="w-full h-full bg-cover bg-center transition-all duration-700"
+        style={{ backgroundImage: `url(${image})` }}
+      />
+    </SwiperSlide>
+  ))}
+</Swiper>;
 
       {/* Content Box */}
         <div className="relative flex items-center justify-center min-h-screen px-6">
