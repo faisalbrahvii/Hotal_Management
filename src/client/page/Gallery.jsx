@@ -5,6 +5,7 @@
   import { CiUser } from "react-icons/ci";
   import { MdInbox } from "react-icons/md";
   import { DELUXE, PEARL, EXECUTIVE } from "../../Data/data.js";
+  import { Link, useNavigate } from 'react-router-dom';
 
   const Gallery = () => {
     const [selectedRate, setSelectedRate] = useState("");
@@ -98,9 +99,12 @@
                           </div>
                           <div className="flex items-center justify-between mt-4">
                             <h5 className="text-lg font-bold text-red-500">${room.price}</h5>
+                            <Link to={`/CustomerInfo/${room.id}`}>
                             <button className="bg-green-600 hover:bg-green-700 text-white text-sm sm:text-base font-semibold rounded-lg px-6 py-3 transition duration-300 shadow-md">
                               Book Now
                             </button>
+                            
+                            </Link>
                           </div>
                         </div>
                       </div>
