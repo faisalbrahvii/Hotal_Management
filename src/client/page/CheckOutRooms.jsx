@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import HeroImage from '../../assets/img/Hero.jpeg';
 import { IoClose } from "react-icons/io5";
 import { FaBed } from "react-icons/fa";
@@ -15,7 +15,7 @@ const CheckOutRooms = () => {
   const [checkOut, setCheckOut] = useState("");
   const [promo, setPromo] = useState("");
   const [error, setError] = useState("");
-
+  const down = useRef(null);
   useEffect(() => {
     const today = new Date();
     const year = today.getFullYear();
@@ -50,6 +50,8 @@ const CheckOutRooms = () => {
       setFilteredRooms([]);
     }
 
+    down.current.scrollIntoView({ behavior: "smooth" });
+
    
   };
 
@@ -62,7 +64,8 @@ const CheckOutRooms = () => {
       setIsLoggedIn(true);
     }
   }, []); 
-  
+
+ 
   return (
     <div>
       <div
@@ -165,7 +168,7 @@ const CheckOutRooms = () => {
       
       </div>
 
-      <section className="py-10 px-4 bg-gray-100">
+      <section className="py-10 px-4 bg-gray-100" ref={down}>
   {/* Show only filtered rooms after clicking the button */}
   {filteredRooms.length > 0 &&
     filteredRooms.map((room) => (

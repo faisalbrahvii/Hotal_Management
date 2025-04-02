@@ -46,14 +46,16 @@ const RegisterModel = () => {
         alert("Invalid credentials!");
       }
     }
+    
+    // Reload the page after login/register
+    window.location.reload();
   };
   
-  
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-900 text-white">
-      <div className="bg-gray-800 p-8 rounded-lg shadow-lg w-96">
-        <h2 className="text-2xl font-semibold text-center mb-6">
-          {isRegistering ? "Register Here" : "Welcome Back"}
+    <div className="flex items-center justify-center min-h-screen bg-black">
+      <div className="bg-gray-800 p-8 rounded-lg shadow-xl w-96 max-w-full">
+        <h2 className="text-3xl font-semibold text-center text-white mb-6">
+          {isRegistering ? "Create an Account" : "Welcome Back!"}
         </h2>
         <Formik
           initialValues={{ name: "", email: "", password: "", confirmPassword: "" }}
@@ -61,57 +63,57 @@ const RegisterModel = () => {
           onSubmit={handleSubmit}
         >
           {({ isSubmitting }) => (
-            <Form className="flex flex-col gap-4">
+            <Form className="flex flex-col gap-6">
               {isRegistering && (
                 <div>
-                  <label className="block text-sm font-medium">First Name</label>
+                  <label className="block text-sm font-medium text-gray-400">Full Name</label>
                   <Field
                     type="text"
                     name="name"
-                    className="w-full px-3 py-2 mt-1 rounded bg-gray-700 border border-gray-600 focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-4 py-2 mt-2 rounded-lg bg-gray-700 border border-gray-600 focus:ring-2 focus:ring-blue-500 text-white"
                   />
-                  <ErrorMessage name="name" component="p" className="text-red-500 text-sm" />
+                  <ErrorMessage name="name" component="p" className="text-red-500 text-sm mt-1" />
                 </div>
               )}
 
               <div>
-                <label className="block text-sm font-medium">Email</label>
+                <label className="block text-sm font-medium text-gray-400">Email Address</label>
                 <Field
                   type="email"
                   name="email"
-                  className="w-full px-3 py-2 mt-1 rounded bg-gray-700 border border-gray-600 focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-2 mt-2 rounded-lg bg-gray-700 border border-gray-600 focus:ring-2 focus:ring-blue-500 text-white"
                 />
-                <ErrorMessage name="email" component="p" className="text-red-500 text-sm" />
+                <ErrorMessage name="email" component="p" className="text-red-500 text-sm mt-1" />
               </div>
 
               <div>
-                <label className="block text-sm font-medium">Password</label>
+                <label className="block text-sm font-medium text-gray-400">Password</label>
                 <Field
                   type="password"
                   name="password"
-                  className="w-full px-3 py-2 mt-1 rounded bg-gray-700 border border-gray-600 focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-2 mt-2 rounded-lg bg-gray-700 border border-gray-600 focus:ring-2 focus:ring-blue-500 text-white"
                 />
-                <ErrorMessage name="password" component="p" className="text-red-500 text-sm" />
+                <ErrorMessage name="password" component="p" className="text-red-500 text-sm mt-1" />
               </div>
 
               {isRegistering && (
                 <div>
-                  <label className="block text-sm font-medium">Confirm Password</label>
+                  <label className="block text-sm font-medium text-gray-400">Confirm Password</label>
                   <Field
                     type="password"
                     name="confirmPassword"
-                    className="w-full px-3 py-2 mt-1 rounded bg-gray-700 border border-gray-600 focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-4 py-2 mt-2 rounded-lg bg-gray-700 border border-gray-600 focus:ring-2 focus:ring-blue-500 text-white"
                   />
-                  <ErrorMessage name="confirmPassword" component="p" className="text-red-500 text-sm" />
+                  <ErrorMessage name="confirmPassword" component="p" className="text-red-500 text-sm mt-1" />
                 </div>
               )}
 
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="bg-blue-500 hover:bg-blue-600 text-white py-2 rounded"
+                className="bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg mt-4 transition duration-300"
               >
-                {isRegistering ? "Register" : "Login"}
+                {isRegistering ? "Sign Up" : "Login"}
               </button>
 
               <div className="text-center mt-3">
