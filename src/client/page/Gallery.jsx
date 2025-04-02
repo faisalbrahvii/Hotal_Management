@@ -1,4 +1,4 @@
-  import React, { useRef, useState } from "react";
+  import React, { useEffect, useRef, useState } from "react";
   import HeroImage from "../../assets/img/Hero.jpeg";
   import { FaArrowDown } from "react-icons/fa6";
   import { LuBed } from "react-icons/lu";
@@ -10,7 +10,16 @@
   const Gallery = () => {
     const [selectedRate, setSelectedRate] = useState("");
     const gallery = useRef(null);
-
+    const navigate = useNavigate();
+      const [isLoggedIn, setIsLoggedIn] = useState(false);
+    
+      useEffect(() => {
+        const user = JSON.parse(localStorage.getItem("userData")); 
+        if (user) {
+          setIsLoggedIn(true);
+        }
+      }, []); 
+    
     const scrollToGallery = () => {
       gallery.current.scrollIntoView({ behavior: "smooth" });
     };
@@ -74,6 +83,7 @@
                 <div key={idx} className="mt-12">
                   <h3 className="text-2xl font-semibold text-gray-700 mb-4">{name} Rooms</h3>
                   <div className="flex overflow-x-auto space-x-6 scrollbar-hide px-2">
+
                     {filteredRooms.map((room, index) => (
                       <div
                         key={index}
@@ -99,12 +109,20 @@
                           </div>
                           <div className="flex items-center justify-between mt-4">
                             <h5 className="text-lg font-bold text-red-500">${room.price}</h5>
-                            <Link to={`/CustomerInfo/${room.id}`}>
-                            <button className="bg-green-600 hover:bg-green-700 text-white text-sm sm:text-base font-semibold rounded-lg px-6 py-3 transition duration-300 shadow-md">
-                              Book Now
-                            </button>
-                            
-                            </Link>
+                             {isLoggedIn ? (
+                                    <Link to={`/CustomerInfo/${room.id}`}>
+                                      <button className=" w-full sm:w-auto bg-black text-white font-semibold py-2 px-6 rounded-lg transition hover:bg-gray-800 hover:shadow-lg">
+                                        Book Now
+                                      </button>
+                                    </Link>
+                                  ) : (
+                                    <button
+                                      onClick={() => navigate("/register")}
+                                      className="mt-6 w-full sm:w-auto bg-red-500 text-white font-semibold py-2 px-6 rounded-lg transition hover:bg-red-700 hover:shadow-lg"
+                                    >
+                                      Register to Book
+                                    </button>
+                                  )}
                           </div>
                         </div>
                       </div>
