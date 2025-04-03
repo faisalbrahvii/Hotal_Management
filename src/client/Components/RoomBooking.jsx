@@ -1,9 +1,17 @@
-import React from 'react'
+import React from 'react';
+import { useNavigate } from 'react-router-dom'; // Use useNavigate instead of useHistory
 
 const RoomBooking = () => {
+  const navigate = useNavigate(); // Initialize the navigate function
+
+  // Function to handle the button click and navigate to the checkout page
+  const handleBookNow = () => {
+    navigate('/CheckoutRoom'); // Redirect to the checkout page
+  };
+
   return (
     <div>
-      <div className="absolute bottom-[-15px] w-full px-3 sm:px-4 animate-fadeIn ">
+      <div onClick={handleBookNow}  className="absolute bottom-[-15px] w-full px-3 sm:px-4 animate-fadeIn">
         <div className="container mx-auto border h-auto flex flex-col sm:flex-row items-center justify-between p-6 sm:p-8 bg-gray-100 rounded-lg gap-4 shadow-lg">
           {/* Check-in Field */}
           <div className="flex flex-col items-start w-full sm:w-1/5">
@@ -56,13 +64,16 @@ const RoomBooking = () => {
           </div>
 
           {/* Book Now Button */}
-          <button className="bg-green-600 text-white font-semibold py-2 px-5 sm:mt-4 rounded-lg hover:bg-green-700 w-full sm:w-auto focus:ring-2 focus:ring-green-400">
+          <button
+            // Handle the button click
+            className="bg-green-600 text-white font-semibold py-2 px-5 sm:mt-4 rounded-lg hover:bg-green-700 w-full sm:w-auto focus:ring-2 focus:ring-green-400"
+          >
             Book Now
           </button>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default RoomBooking
+export default RoomBooking;
