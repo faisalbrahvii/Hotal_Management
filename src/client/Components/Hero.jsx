@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import HeroImage1 from "../../assets/img/Hero.jpeg";
 import HeroImage2 from "../../assets/img/Hero.jpeg";
+import { CiBoxList } from "react-icons/ci";
+import { Link } from "react-router-dom";
+
 
 const Hero = () => {
   const images = [HeroImage1, HeroImage2];
@@ -44,9 +47,13 @@ const Hero = () => {
           </p>
         </div>
         <div className="mt-5 sm:mt-6">
-          <button className="text-white bg-green-600 hover:bg-green-700 px-4 py-3 font-medium rounded-md w-full sm:w-auto">
-            Click here to watch my room
+          <Link to='/gallery'>
+          <button className="flex  items-center justify-between gap-3 text-white bg-green-600 hover:bg-green-700 px-4 py-3 font-medium rounded-md w-full sm:w-auto">
+          <CiBoxList className="p-1 " size={25} />
+          Click here to check all  rooms
           </button>
+
+          </Link>
         </div>
       </div>
 

@@ -1,5 +1,7 @@
   import React, { useEffect, useState } from 'react';
   import HeroImage from '../../assets/img/Hero.jpeg';
+  import { useNavigate } from "react-router-dom";
+
   // import { IoIosArrowDown } from "react-icons/io";
   import {SearchData} from "../../Data/data"; 
   import { useParams } from 'react-router-dom';
@@ -12,8 +14,9 @@
     const [showForm, setShowForm] = useState(true);
     const { id } = useParams();
     const [room, setRoom] = useState(null);
-    
-    // Getting query parameters
+    const [showModal, setShowModal] = useState(false); 
+    const navigate = useNavigate(); // Initialize the navigate function
+
     const queryParams = new URLSearchParams(window.location.search);
     const checkIn = queryParams.get("checkIn");
     const checkOut = queryParams.get("checkOut");
@@ -25,11 +28,12 @@
     const handleBookings = () => {
       setShowForm(false); // Hide the form
       setLoading(true); // Show loading state
-
+    
       setTimeout(() => {
         setLoading(false); // Hide loading
         setSuccess(true); // Show success message
-      }, 2000); // 2 seconds delay
+        setShowModal(true); // Show the modal after success
+      }, 2000); // After 2 seconds, show success
     };
     useEffect(() => {
       // Fetch Room Data
@@ -376,24 +380,41 @@
 
       {/* Buttons */}
       <div className="mt-5 flex flex-col items-center sm:items-end">
-        <button
-          onClick={handleBookings}
-          className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-md text-lg font-semibold flex items-center gap-2"
-        >
-          {loading ? (
-            <>
-              <svg className="animate-spin h-5 w-5 text-white" viewBox="0 0 24 24">
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
-              </svg>
-              Loading...
-            </>
-          ) : (
-            "Continue →"
-          )}
-        </button>
+      <button
+            onClick={handleBookings} // Call handleBookings on click
+            className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-md text-lg font-semibold flex items-center gap-2"
+          >
+            {loading ? (
+              <>
+                <svg className="animate-spin h-5 w-5 text-white" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                </svg>
+                Loading...
+              </>
+            ) : (
+              "Continue →"
+            )}
+          </button>
 
-        {success && <h1 className="text-green-600 text-lg mt-2 sm:mt-0">Thanks for booking the room!</h1>}
+          {showModal && (
+       <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+       <div className="bg-gradient-to-r from-green-500 to-blue-500 p-8 rounded-lg shadow-xl text-center max-w-sm w-full transform transition-all duration-500 ease-in-out scale-90 hover:scale-100">
+         <h1 className="text-white text-2xl sm:text-3xl font-semibold mb-4">Thanks for booking the room!</h1>
+         <p className="text-white mb-6 text-sm sm:text-base">Your booking has been confirmed. We can't wait to welcome you!</p>
+         <button
+          onClick={() => {
+            setShowModal(false); // Close the modal
+            navigate("/CheckoutRoom"); // Navigate to the CheckoutRoom page
+          }}
+          className="mt-4 bg-yellow-400 hover:bg-yellow-500 text-white px-6 py-3 rounded-lg text-lg font-semibold transition-all duration-300 ease-in-out transform hover:scale-105"
+        >
+          Close
+        </button>
+       </div>
+     </div>
+     
+      )}
       </div>
     </div>
     
