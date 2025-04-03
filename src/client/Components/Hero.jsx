@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
-import HeroImage1 from "../../assets/img/Hero.jpeg";
-import HeroImage2 from "../../assets/img/Hero.jpeg";
+import HeroImage1 from "../../assets/img/h1.jpeg";
+import HeroImage2 from "../../assets/img/h2.jpeg";
+import HeroImage3 from "../../assets/img/h3.jpeg";
 import { CiBoxList } from "react-icons/ci";
 import { Link } from "react-router-dom";
 
 
 const Hero = () => {
-  const images = [HeroImage1, HeroImage2];
+  const images = [HeroImage1, HeroImage2 , HeroImage3];
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
@@ -34,7 +35,7 @@ const Hero = () => {
       </div>
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/50 "></div>
+      <div className="absolute inset-0 bg-black/70 "></div>
 
       {/* Hero Content */}
       <div className="relative z-10 max-w-3xl px-4 sm:px-8 text-center mt-44 sm:text-left sm:mb-16 md:mb-4 xl:mb-1">
@@ -48,7 +49,7 @@ const Hero = () => {
         </div>
         <div className="mt-5 sm:mt-6">
           <Link to='/gallery'>
-          <button className="flex  items-center justify-between gap-3 text-white bg-green-600 hover:bg-green-700 px-4 py-3 font-medium rounded-md w-full sm:w-auto">
+          <button className="flex  items-center justify-between gap-3 text-sm  text-white bg-green-600 hover:bg-green-700 px-4 py-3 font-medium rounded-md w-full sm:w-auto">
           <CiBoxList className="p-1 " size={25} />
           Click here to check all  rooms
           </button>

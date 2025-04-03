@@ -1,8 +1,6 @@
 import React from 'react'
-import HeroImage from '../../assets/Our_Amenities/5.png';
-import HeroImage2 from '../../assets/img/Hero.jpeg';
-import HeroImage1 from '../../assets/img/Hero.jpeg';
-import mainImage from "../../assets/Our_Amenities/main.jpeg";
+import HeroImage from '../../assets/Our_Amenities/o1.jpeg';
+import mainImage from "../../assets/Our_Amenities/o2.jpeg";
 
 import { IoPeopleSharp } from "react-icons/io5";
 import { FaBedPulse, FaBath, FaWifi, FaCalendarDays } from 'react-icons/fa6';
@@ -21,49 +19,32 @@ import "swiper/css/pagination";
 import { Pagination, Navigation, Autoplay , EffectFade  } from "swiper/modules";
 import { images  } from '../../Data/amenities';
 const Our_Amenities = () => {
-  
-
- 
-
-  const heroImages = [mainImage];
-
-
+//  const heroImages = [HeroImage];
   return (
     <div>
-      <div className="relative w-full min-h-screen">
-      {/* Background Image Slider */}
-      <Swiper
-  modules={[Autoplay, EffectFade]}
-  effect="fade"
-  autoplay={{ delay: 4000, disableOnInteraction: false }}
-  loop={true}
-  className="absolute inset-0 w-full h-full z-0"
->
-  {heroImages.map((image, index) => (
-    <SwiperSlide key={index}>
-      <div
-        className="w-full h-full bg-cover bg-center transition-all duration-700"
-        style={{ backgroundImage: `url(${image})` }}
-      />
-    </SwiperSlide>
-  ))}
-</Swiper>;
+     <div className="relative w-full min-h-screen">
+  {/* Background Image */}
+  <div
+    className="absolute inset-0 w-full h-full bg-cover bg-center z-0"
+    style={{ backgroundImage: `url(${mainImage})` }}
+  ></div>
 
-      {/* Content Box */}
-        <div className="relative flex items-center justify-center min-h-screen px-6">
-          <div className="bg-black/50 backdrop-blur-md text-white text-center p-10 sm:p-14 rounded-2xl shadow-xl w-full">
-            <h1 className="text-4xl sm:text-6xl font-serif font-bold">
-              Find Your Peace 🕊
-            </h1>
-            <p className="text-lg sm:text-2xl font-sans mt-4">
-              The Place where you are looking for
-            </p>
-            <button className="mt-6 px-6 py-3 bg-yellow-400 text-black font-semibold rounded-lg hover:bg-yellow-500 transition-all">
-              Book Your Stay
-            </button>
-          </div>
-        </div>
+  {/* Content Box */}
+  <div className="relative flex items-center justify-center min-h-screen px-6">
+    <div className="bg-black/50 backdrop-blur-md text-white text-center p-10 sm:p-14 rounded-2xl shadow-xl w-full">
+      <h1 className="text-4xl sm:text-6xl font-serif font-bold">
+        Find Your Peace 🕊
+      </h1>
+      <p className="text-lg sm:text-2xl font-sans mt-4">
+        The Place where you are looking for
+      </p>
+      <button className="mt-6 px-6 py-3 bg-yellow-400 text-black font-semibold rounded-lg hover:bg-yellow-500 transition-all">
+        Book Your Stay
+      </button>
     </div>
+  </div>
+</div>
+
   
            <div className="w-full flex justify-center bg-gray-100 p-6 sm:p-10">
       <div className="max-w-5xl w-full bg-white shadow-2xl rounded-lg overflow-hidden grid grid-cols-1 md:grid-cols-2 gap-6">

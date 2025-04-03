@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import HeroImage from '../../assets/img/Hero.jpeg';
+import HeroImage from '../../assets/img/h4.jpeg';
 import { IoClose } from "react-icons/io5";
 import { FaBed } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom';
