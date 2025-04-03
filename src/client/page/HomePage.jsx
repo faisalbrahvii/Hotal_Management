@@ -7,18 +7,20 @@ import Blog from '../Components/Blog'
 import Testimonials from '../Components/Testimonials'
 import WhyChooseUs from '../Components/WhyChooseUs'
 import FAQ from '../Components/FAQ'
+import RoomBooking from '../Components/RoomBooking'
 
 const HomePage = () => {
   return (
     <div>
-      <Hero />          {/* Hero section (Banner with CTA) */}
-      <Categories />    {/* Categories (Hotel Services & Features) */}
-      <RoomBooks />     {/* Room Booking Options with Cards */}
-      <Experience />    {/* Experience Section (Stats & Highlights) */}
-      <WhyChooseUs />   {/* Why Choose Us (Key Benefits Section) */}
-      <Testimonials />  {/* Customer Testimonials (Social Proof) */}
-      <Blog />          {/* Blog Section (Travel Articles & Insights) */}
-      <FAQ />           {/* FAQ Section (Common Questions) */}
+      <Hero />      
+      <RoomBooking />  
+      <Categories />   
+      <RoomBooks />    
+      <Experience />   
+      <WhyChooseUs />  
+      <Testimonials /> 
+      <Blog />         
+      <FAQ />          
     </div>
   );
 };

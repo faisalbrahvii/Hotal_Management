@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import HeroImage1 from '../../assets/img/Hero.jpeg';
-import HeroImage2 from '../../assets/img/Hero.jpeg';
+import HeroImage1 from "../../assets/img/Hero.jpeg";
+import HeroImage2 from "../../assets/img/Hero.jpeg";
 
 const Hero = () => {
   const images = [HeroImage1, HeroImage2];
@@ -14,58 +14,56 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-screen flex items-center justify-center text-center bg-gray-900 overflow-hidden">
+    <div className="relative w-full h-screen   bg-gray-900 overflow-hidden">
+      {/* Background Images */}
       <div className="absolute inset-0 w-full h-full">
         {images.map((image, index) => (
-          <div
+          <img
             key={index}
-            className={`absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 transform ${
+            src={image}
+            alt={`Hero background ${index + 1}`}
+            loading="lazy"
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 transform ${
               currentImageIndex === index ? "opacity-100 scale-100" : "opacity-0 scale-105"
             }`}
-            style={{ backgroundImage: `url(${image})` }}
-          ></div>
+          />
         ))}
       </div>
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/50"></div>
+      <div className="absolute inset-0 bg-black/50 "></div>
 
       {/* Hero Content */}
-      <div className="relative z-10 max-w-3xl px-6 sm:px-12">
-        <h1 className="text-white text-4xl sm:text-5xl md:text-6xl font-bold leading-tight drop-shadow-lg">
-          Welcome to <span className="text-yellow-400">Paradise</span>
+      <div className="relative z-10 max-w-3xl px-4 sm:px-8 text-center mt-44 sm:text-left sm:mb-16 md:mb-4 xl:mb-1">
+        <h1 className="text-white text-3xl sm:text-5xl md:text-6xl leading-tight drop-shadow-lg">
+          Enjoy Your Dream <span className="text-yellow-400">Vacation</span>
         </h1>
-        <p className="text-white/80 text-lg sm:text-xl mt-4">
-          Escape to luxury with breathtaking views and five-star services.
-        </p>
-        <button
-    className="relative overflow-hidden bg-yellow-500 hover:bg-yellow-600 text-black font-semibold rounded-lg px-8 py-3 transition-all group mt-4 animate-fadeIn pulse-effect"
-  >
-    Reserve Now
-    <span className="absolute inset-0 bg-yellow-400 opacity-10 group-hover:opacity-30 transition-all"></span>
-        </button>
-      </div>
-
-      <div className="absolute bottom-0 w-full">
-        <svg className="w-full h-24 sm:h-32" viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            fill="white"
-            d="M0,96L48,122.7C96,149,192,203,288,202.7C384,203,480,149,576,122.7C672,96,768,96,864,101.3C960,107,1056,117,1152,149.3C1248,181,1344,235,1392,261.3L1440,288V320H1392C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320H0Z"
-          />
-        </svg>
+        <div className="mt-3 sm:mt-4">
+          <p className="text-white text-sm sm:text-base">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga recusandae sint totam ratione! 
+          </p>
+        </div>
+        <div className="mt-5 sm:mt-6">
+          <button className="text-white bg-green-600 hover:bg-green-700 px-4 py-3 font-medium rounded-md w-full sm:w-auto">
+            Click here to watch my room
+          </button>
+        </div>
       </div>
 
       {/* Navigation Dots */}
-      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3">
+      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2">
         {images.map((_, index) => (
           <div
             key={index}
-            className={`w-4 h-4 rounded-full transition-all duration-300 ${
-              currentImageIndex === index ? "bg-yellow-500 scale-125" : "bg-white/50"
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              currentImageIndex === index ? "bg-yellow-500 scale-110" : "bg-white/50"
             }`}
           />
         ))}
       </div>
+
+      {/* Booking Section */}
+      
     </div>
   );
 };

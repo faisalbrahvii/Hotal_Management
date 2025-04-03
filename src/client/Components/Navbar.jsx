@@ -49,6 +49,7 @@ const Navbar = () => {
         <nav className="hidden md:flex items-center gap-8 text-white">
           <Link to="/gallery" className="hover:text-yellow-400 transition">Gallery</Link>
           <Link to="/about" className="hover:text-yellow-400 transition">About Us</Link>
+          <Link to="/about" className="hover:text-yellow-400 transition">Support</Link>
 
           {isLoggedIn ? (
             <button
@@ -62,7 +63,7 @@ const Navbar = () => {
               to="/register"
               className="bg-green-500 hover:bg-green-600 text-white  rounded px-7 py-1 transition-all"
             >
-              register
+              Sign in
             </Link>
           )}
         </nav>
@@ -104,8 +105,6 @@ const Navbar = () => {
               {index !== 4 && <hr className="w-24 border-t border-white/30" />}
             </React.Fragment>
           ))}
-
-          {/* Login/Logout Buttons */}
           {isLoggedIn ? (
             <button
               onClick={handleLogout}

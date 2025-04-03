@@ -86,7 +86,12 @@
       const filteredRooms = filterRoomsByRate(rooms);
       return (
         <div key={idx} className="mt-12">
-          <h3 className="text-2xl font-semibold text-gray-700 mb-6">{name} Rooms</h3>
+          <h3 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 relative 
+               before:absolute before:w-10 before:h-1 before:bg-red-500 
+               before:-bottom-1 before:left-0">
+  {name} <span className="text-red-500">Rooms</span>
+</h3>
+        
 
           {/* Scrollable Container */}
           <div className="flex overflow-x-auto space-x-6 scrollbar-hide px-2 snap-x snap-mandatory">
