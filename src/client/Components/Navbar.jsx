@@ -78,51 +78,58 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="fixed top-0 left-0 w-full h-full bg-black/80 backdrop-blur-lg text-white flex flex-col items-center justify-center transition-all duration-500">
-          <button
-            onClick={() => setMenuOpen(false)}
-            className="absolute top-6 right-6 text-white text-3xl hover:text-yellow-400 transition-all duration-300"
-          >
-            <RiCloseFill />
-          </button>
+  <div className="fixed top-0 left-0 w-full h-full bg-black/80 backdrop-blur-lg text-white flex flex-col items-center justify-center transition-all duration-500">
+    <button
+      onClick={() => setMenuOpen(false)}
+      className="absolute top-6 right-6 text-white text-4xl hover:text-yellow-400 transition-all duration-300"
+    >
+      <RiCloseFill />
+    </button>
 
-          {/* Mobile Nav Links */}
-          {[
-            { name: "Home", path: "/" },
-            { name: "BookRooms", path: "/CheckoutRoom" },
-            { name: "Our Amenities", path: "/Our_Amenities" },
-            { name: "Gallery", path: "/Gallery" },
-            { name: "About Us", path: "/About" }
-          ].map((item, index) => (
-            <React.Fragment key={index}>
-              <Link
-                to={item.path}
-                onClick={() => setMenuOpen(false)}
-                className="hover:text-yellow-400 transition-all duration-300 transform hover:scale-110"
-              >
-                {item.name}
-              </Link>
-              {index !== 4 && <hr className="w-24 border-t border-white/30" />}
-            </React.Fragment>
-          ))}
-          {isLoggedIn ? (
-            <button
-              onClick={handleLogout}
-              className="bg-red-500 hover:bg-red-600 text-white font-semibold rounded-lg px-8 py-3 transition-all mt-4"
-            >
-              Logout
-            </button>
-          ) : (
-            <Link
-              to="/login"
-              onClick={() => setMenuOpen(false)}
-              className="bg-green-500 hover:bg-green-600 text-white  rounded px-7 py-1 transition-all mt-4"
-            >
-              register
-            </Link>
-          )}
-        </div>
-      )}
+    {/* Mobile Nav Links */}
+    {[ 
+      { name: "Home", path: "/" },
+      { name: "Book Rooms", path: "/CheckoutRoom" },
+      { name: "Our Amenities", path: "/Our_Amenities" },
+      { name: "Gallery", path: "/Gallery" },
+      { name: "About Us", path: "/About" }
+    ].map((item, index) => (
+      <React.Fragment key={index}>
+        <Link
+          to={item.path}
+          onClick={() => setMenuOpen(false)}
+          className="text-xl font-semibold hover:text-yellow-400 transition-all duration-300 transform hover:scale-110 py-2"
+        >
+          {item.name}
+        </Link>
+        {index !== 4 && (
+          <hr className="w-16 border-t border-white/40 my-4" />
+        )}
+      </React.Fragment>
+    ))}
+
+    {/* Horizontal Line in the Middle */}
+    <hr className="w-2/3 border-t border-white/40 my-6" />
+
+    {isLoggedIn ? (
+      <button
+        onClick={handleLogout}
+        className="bg-red-500 hover:bg-red-600 text-white font-semibold rounded-lg px-8 py-3 transition-all mt-6 shadow-lg hover:scale-105"
+      >
+        Logout
+      </button>
+    ) : (
+      <Link
+        to="/login"
+        onClick={() => setMenuOpen(false)}
+        className="bg-green-500 hover:bg-green-600 text-white rounded px-7 py-2 transition-all mt-6 shadow-lg hover:scale-105"
+      >
+        Register
+      </Link>
+    )}
+  </div>
+)}
+
     </header>
   );
 };
