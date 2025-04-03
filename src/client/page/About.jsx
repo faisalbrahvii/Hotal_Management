@@ -1,5 +1,6 @@
 import React, { useRef } from 'react'
-import HeroImage from '../../assets/blog/wp8.png';
+import HeroImage1 from '../../assets/blog/hero-carousel-1.jpg';
+import HeroImage from '../../assets/blog/blog-inside-post.jpg';
 import { FaArrowRight } from "react-icons/fa6";
 import { FaWhatsapp  , FaFacebook , FaTwitter , FaInstagram} from "react-icons/fa";
 import { FaArrowRightLong } from "react-icons/fa6";
@@ -22,7 +23,7 @@ const About = () => {
         name="home"
         className="w-full bg-zinc-200 pt-[80px] overflow-hidden"
         style={{
-          backgroundImage: `url(${HeroImage})`,
+          backgroundImage: `url(${HeroImage1})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',

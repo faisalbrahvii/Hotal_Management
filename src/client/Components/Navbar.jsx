@@ -49,7 +49,7 @@ const Navbar = () => {
         <nav className="hidden md:flex items-center gap-8 text-white">
           <Link to="/gallery" className="hover:text-yellow-400 transition">Gallery</Link>
           <Link to="/about" className="hover:text-yellow-400 transition">About Us</Link>
-          <Link to="/about" className="hover:text-yellow-400 transition">Support</Link>
+          <Link to="/support" className="hover:text-yellow-400 transition">Support</Link>
 
           {isLoggedIn ? (
             <button

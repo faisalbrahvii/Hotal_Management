@@ -5,6 +5,12 @@ import wp3 from '../assets/blog/wp3.png';
 import wp4 from '../assets/blog/wp4.jpg';
 import wp5 from '../assets/blog/wp5.jpg';
 import wp6 from '../assets/blog/wp6.jpg';
+import wp7 from '../assets/blog/client-1.png';
+import wp8 from '../assets/blog/client-2.png';
+import wp9 from '../assets/blog/client-3.png';
+import wp10 from '../assets/blog/client-4.png';
+import wp11 from '../assets/blog/client-5.png';
+import wp12 from '../assets/blog/client-6.png';
 
 
 export const DisplayCategories = [
@@ -30,27 +36,27 @@ export const DisplayCategories = [
 export const OurPartnerships = [
     {
         CategoriesId : 1,
-        CategoryImage : useImage,
+        CategoryImage : wp7,
     },
     {
         CategoriesId : 2,
-        CategoryImage : useImage,
+        CategoryImage : wp8,
     },
     {
         CategoriesId : 3,
-        CategoryImage : useImage,
+        CategoryImage : wp9,
     },
     {
         CategoriesId : 4,
-        CategoryImage : useImage,
+        CategoryImage : wp10,
     },
     {
         CategoriesId : 5,
-        CategoryImage : useImage,
+        CategoryImage : wp11,
     },
     {
         CategoriesId : 6,
-        CategoryImage : useImage,
+        CategoryImage : wp12,
     },
    
 ];
